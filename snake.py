@@ -51,11 +51,10 @@ class Snake:
         self.segments[-1].goto(self.segments[-2].position())
 
     def detect_collision(self):
-        for _ in self.segments:
-            if _ == self.segments[0]:
-                pass
-            elif _.distance(self.segments[0]) < 10:
+        for _ in self.segments[1:]:
+            if _.distance(self.segments[0]) < 1:
                 return True
+        return False
 
     def is_in_boundry(self):
         return self.segments[0].xcor() > -MARGIN and self.segments[0].xcor() < MARGIN and self.segments[0].ycor() > -MARGIN and self.segments[0].ycor() < MARGIN
